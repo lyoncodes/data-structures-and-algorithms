@@ -82,9 +82,15 @@ console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
 const append = (arr1, arr2) => {
-  // Solution code here...
-
+  for (let i = 0; i < arr2.length; i++) {
+    arr1.push(arr2[i])
+  }
 }
+// const append = (arr1, arr2) => {
+//   arr2.forEach((value, arr2) => {
+//     arr1.push(arr2[value])
+//   })
+// }
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -127,21 +133,21 @@ describe('Testing challenge 3', () => {
 
 describe('Testing challenge 4', () => {
   test('It should add a property to every object in an array', () => {
-    const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
-    setStatusAsAuthor(a);
+    const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }]
+    setStatusAsAuthor(a)
 
-    expect(a[0].isAuthor).toStrictEqual(true);
-    expect(a[1].isAuthor).toStrictEqual(true);
-    expect(a[2].isAuthor).toStrictEqual(true);
-  });
-});
+    expect(a[0].isAuthor).toStrictEqual(true)
+    expect(a[1].isAuthor).toStrictEqual(true)
+    expect(a[2].isAuthor).toStrictEqual(true)
+  })
+})
 
-// describe('Testing challenge 5', () => {
-//   test('It should append the second array to the first', () => {
-//     const a = [1, 2, 3, 4];
-//     const b = [5, 6, 7, 8];
-//     append(a, b);
+describe('Testing challenge 5', () => {
+  test('It should append the second array to the first', () => {
+    const a = [1, 2, 3, 4]
+    const b = [5, 6, 7, 8]
+    append(a, b)
 
-//     expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
-//   });
-// });
+    expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8])
+  })
+})
