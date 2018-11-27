@@ -82,6 +82,18 @@ const sortNumbersByLength = (arr) => {
   arr = arr.map(Number)
   return arr
 }
+
+// const sortNumbersByLength = (arr) => {
+//   arr = arr.join(' ').toString().split(' ')
+//   arr.sort((a, b) => {
+//     a.length < b.length ? -1 : false;
+//     a.length < b.length ? 1 : false;
+//     return 0
+//   })
+//   arr = arr.map(Number)
+//   return arr
+// }
+
 /* -----------------------------------------------------------------------------------------------
 CHALLENGE 7
 Write a function named sortPeople that takes in an array of Person objects, each of which has firstName, lastName, and age properties, and sorts those people by their last names. Do not worry about capitalization or first names.
@@ -121,7 +133,7 @@ const sortPeopleBetter = (arr) => {
     if (a.firstName === b.firstName) {
       if (a.age > b.age) return 1
     }
-  // if (a.age > b.age) return 1
+    // if (a.age > b.age) return 1
   })
   return arr
 }
@@ -147,7 +159,14 @@ const meetings = [
 ]
 
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
+  arr.sort((a, b) => {
+    if (a.dayOfWeek === 'Monday') { return -1 }
+    if (b.dayOfWeek === 'Monday') { return 1 }
+    if (a.dayOfWeek === 'Tuesday' || b.dayOfWeek === 'Tuesday') { return 1 }
+    if (a.dayOfWeek === 'Wednesday' || b.dayOfWeek === 'Wednesday') { return 0 }
+    if (a.dayOfWeek === 'Friday' || b.dayOfWeek === 'Friday') { return 1 }
+  })
+  return arr
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -158,7 +177,10 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  // Solution code here...
+  arr.sort((a, b) => {
+    if (a.end > b.end) return 1
+  })
+  return arr
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -264,25 +286,25 @@ describe('Testing challenge 8', () => {
   })
 })
 
-// describe('Testing challenge 9', () => {
-//   test('It should sort meetings by the day on which they happen', () => {
-//     const sortedMeetings = sortMeetingsByDay(meetings);
-//     expect(sortedMeetings.slice(0,2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
-//     expect(sortedMeetings[2]).toStrictEqual(new Meeting('Tuesday', '1145', '1315'));
-//     expect(sortedMeetings.slice(3,5)).toEqual(expect.arrayContaining([new Meeting('Wednesday', '0930', '1000'), new Meeting('Wednesday', '1300', '1500')]));
-//     expect(sortedMeetings[5]).toStrictEqual(new Meeting('Friday', '1200', '1345'));
-//   });
-// });
+describe('Testing challenge 9', () => {
+  test('It should sort meetings by the day on which they happen', () => {
+    const sortedMeetings = sortMeetingsByDay(meetings)
+    expect(sortedMeetings.slice(0, 2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]))
+    expect(sortedMeetings[2]).toStrictEqual(new Meeting('Tuesday', '1145', '1315'))
+    expect(sortedMeetings.slice(3, 5)).toEqual(expect.arrayContaining([new Meeting('Wednesday', '0930', '1000'), new Meeting('Wednesday', '1300', '1500')]))
+    expect(sortedMeetings[5]).toStrictEqual(new Meeting('Friday', '1200', '1345'))
+  })
+})
 
-// describe('Testing challenge 10', () => {
-//   test('It should sort meetings by when they happen', () => {
-//     expect(sortSchedule(meetings)).toStrictEqual([
-//       new Meeting('Monday', '0900', '0945'),
-//       new Meeting('Monday', '0900', '1000'),
-//       new Meeting('Tuesday', '1145', '1315'),
-//       new Meeting('Wednesday', '0930', '1000'),
-//       new Meeting('Wednesday', '1300', '1500'),
-//       new Meeting('Friday', '1200', '1345'),
-//     ]);
-//   });
-// });
+describe('Testing challenge 10', () => {
+  test('It should sort meetings by when they happen', () => {
+    expect(sortSchedule(meetings)).toStrictEqual([
+      new Meeting('Monday', '0900', '0945'),
+      new Meeting('Monday', '0900', '1000'),
+      new Meeting('Tuesday', '1145', '1315'),
+      new Meeting('Wednesday', '0930', '1000'),
+      new Meeting('Wednesday', '1300', '1500'),
+      new Meeting('Friday', '1200', '1345'),
+    ]);
+  });
+});
