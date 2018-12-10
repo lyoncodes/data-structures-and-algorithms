@@ -117,7 +117,8 @@ const snorlaxAbilities = {
 }
 
 const extractAbilities = (arr) => {
-  // Solution code here...
+  arr = arr.map(el => el.ability.name)
+  return arr
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -164,7 +165,7 @@ const snorlaxStats = {
 }
 
 const extractStats = (arr) => {
-  // Solution code here...
+
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -223,7 +224,7 @@ describe('Testing challenge 5', () => {
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([ 'odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd' ]);
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541]).length).toStrictEqual(8);
   });
-  
+
   test('It should work with all odd numbers', () => {
     expect(evenOdd([1, 3, 5, 7, 9])).toStrictEqual([ 'odd', 'odd', 'odd', 'odd', 'odd' ]);
     expect(evenOdd([1, 3, 5, 7, 9]).length).toStrictEqual(5);
@@ -240,20 +241,20 @@ describe('Testing challenge 5', () => {
   });
 });
 
-// describe('Testing challenge 6', () => {
-//   test('It should return an array containing only the ability names', () => {
-//     expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
-//     expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should return an array containing only the ability names', () => {
+    expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
+    expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
+  });
+});
 
-// describe('Testing challenge 7', () => {
-//   test('It should return an array containing objects with name and total values', () => {
-//     expect(extractStats(snorlaxStats.stats)).toStrictEqual([
-//       { name: 'speed', total: 35, },
-//       { name: 'special-defense', total: 112, },
-//       { name: 'special-attack', total: 74, },
-//     ]);
-//     expect(extractStats(snorlaxStats.stats).length).toStrictEqual(3);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should return an array containing objects with name and total values', () => {
+    expect(extractStats(snorlaxStats.stats)).toStrictEqual([
+      { name: 'speed', total: 35, },
+      { name: 'special-defense', total: 112, },
+      { name: 'special-attack', total: 74, },
+    ]);
+    expect(extractStats(snorlaxStats.stats).length).toStrictEqual(3);
+  });
+});
